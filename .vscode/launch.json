@@ -1,0 +1,12 @@
+{
+    // F5: mở index.html bằng Chrome
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Mở index.html",
+            "file": "${workspaceFolder}/index.html"
+        }
+    ]
+}

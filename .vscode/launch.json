@@ -1,5 +1,5 @@
 {
-    // F5: mở index.html bằng Chrome
+    // F5: chọn cấu hình ở ô Run and Debug
     "version": "0.2.0",
     "configurations": [
         {
@@ -7,6 +7,46 @@
             "request": "launch",
             "name": "Mở index.html",
             "file": "${workspaceFolder}/index.html"
+        },
+        {
+            // Xem trang ở khổ iPhone / Android / iPad cùng lúc ngay trên máy Mac (không cần điện thoại, không cần mạng)
+            "type": "chrome",
+            "request": "launch",
+            "name": "Xem giả lập điện thoại",
+            "file": "${workspaceFolder}/tools/xem-dien-thoai.html"
+        },
+        {
+            // Dùng khi cần gửi thử form đăng ký: chạy máy chủ thử Python ở cổng 5500,
+            // máy chủ báo sẵn sàng thì tự mở http://localhost:5500/index.html trên trình duyệt.
+            // Dừng máy chủ bằng nút ■ (Stop) trên thanh debug.
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Mở qua máy chủ thử (gửi form được)",
+            "program": "${workspaceFolder}/tools/may-chu-thu.py",
+            "args": ["5500", "127.0.0.1"],
+            "cwd": "${workspaceFolder}",
+            "env": { "PYTHONUNBUFFERED": "1" },
+            "console": "internalConsole",
+            "justMyCode": true,
+            "serverReadyAction": {
+                "pattern": "port ([0-9]+)",
+                "uriFormat": "http://localhost:%s/index.html",
+                "action": "openExternally"
+            }
+        },
+        {
+            // Xem trên điện thoại thật: máy tính và điện thoại cùng một mạng Wi-Fi.
+            // Chạy xong, trên điện thoại mở http://<địa chỉ IP của máy Mac>:5501/index.html
+            // (xem IP: Cài đặt hệ thống → Wi-Fi → Chi tiết). Dừng bằng nút ■.
+            "type": "debugpy",
+            "request": "launch",
+            "name": "Xem trên điện thoại (cùng Wi-Fi)",
+            "program": "${workspaceFolder}/tools/may-chu-thu.py",
+            "args": ["5501", "0.0.0.0"],
+            "cwd": "${workspaceFolder}",
+            "env": { "PYTHONUNBUFFERED": "1" },
+            "console": "internalConsole",
+            "justMyCode": true
         }
     ]
 }

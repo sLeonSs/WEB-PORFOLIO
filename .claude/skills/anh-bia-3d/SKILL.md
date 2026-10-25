@@ -38,4 +38,6 @@ Module 3D chỉ thêm class `.is-3d` (ẩn ảnh ghép, hiện canvas) sau khi t
   - Lót chuột có 4 chú thích: `speed`, `stitch`, `size` (Size custom theo yêu cầu, chỉ vào cạnh trái) và `rubber`. Bàn phím có 4 chú thích: `profile`, `pbt`, `keys` và `box`.
   - Điểm neo của mũi tên nằm trong `anchors` (toạ độ cục bộ của từng vật thể). Vị trí các ô nằm trong CSS `.h3d-co[data-k=...]`, với lót chuột ở nửa trên và bàn phím ở nửa dưới. Nếu đổi `show`, camera hoặc bố cục thì phải chỉnh lại các vị trí này.
   - Khi bật `prefers-reduced-motion`, cả hai đứng yên ở góc `show`.
-  - Trên điện thoại (từ 640px trở xuống), `.hero-art` bị ẩn nên module không khởi động.
+  - Trên điện thoại (từ 640px trở xuống), `.hero-art` **được hiện** (khách yêu cầu; khối CSS "ĐIỆN THOẠI · HIỆN MÔ HÌNH 3D Ở ẢNH BÌA"): khung vuông rộng hết cột, nằm dưới 2 nút và trên hàng năng lực. Ô chú thích `.h3d-callouts` bị ẩn trên điện thoại vì vị trí của chúng căn cho màn lớn. Chạm vào sản phẩm vẫn quay về góc trưng bày.
+  - Chỉ khi màn thấp và hẹp (`max-height:520px` và `max-width:980px`, tức điện thoại xoay ngang), `.hero-art` mới bị ẩn và module không khởi động.
+  - Kiểm tra 3D bằng Chrome headless: Three.js tải từ CDN nên không chạy được với `--virtual-time-budget`. Cần chạy qua máy chủ http, dùng `--use-angle=swiftshader --enable-unsafe-swiftshader --timeout=14000`, và để trang thử cùng nguồn với trang chính.
